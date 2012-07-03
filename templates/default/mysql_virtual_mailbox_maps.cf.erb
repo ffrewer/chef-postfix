@@ -1,0 +1,11 @@
+# Managed by Chef for <%= node[:fqdn] %>
+# Local changes will be overwritten.
+
+user = <%= node[:postfix][:mysql_domains][:mysql_user] %>
+password = <%= node[:postfix][:mysql_domains][:mysql_password] %>
+hosts = <%= node[:postfix][:mysql_domains][:mysql_hostname] %>
+dbname = <%= node[:postfix][:mysql_domains][:mysql_database] %>
+table = mailbox
+select_field = maildir
+where_field = username
+additional_conditions = and active = '1'
