@@ -23,10 +23,10 @@ include_recipe 'ssl_certificates'
 
 # Configure Postfix pre-seeding.
 execute 'preseed postfix' do
-  command "debconf-set-selections #{node[:apt][:preseed_directory]}/postfix.seed"
+  command "debconf-set-selections /var/cache/local/preseeding/postfix.seed"
   action :nothing
 end
-template "#{node[:apt][:preseed_directory]}/postfix.seed" do
+template "/var/cache/local/preseeding/postfix.seed" do
   source 'postfix.seed.erb'
   owner 'root'
   group 'root'
